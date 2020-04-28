@@ -1,9 +1,9 @@
 # hello-world
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
+ 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
  
@@ -14,119 +14,89 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
  
-    public class MainView {
-	private JFrame frame;
- 
-	public static void main(String[] args) {
-		MainView index = new MainView();
-		JFrame frame2 = index.getFrame();
-		frame2.setVisible(true);
-	}
- 
-	public JFrame getFrame() {
-		initialize();
-		return frame;
-	}
- 
-	public void initialize() {
- 
-		frame = new JFrame();
-		frame.setTitle("欢迎进入学生成绩排名系统");
-		frame.setBounds(300, 250, 900, 500);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
- 
-		
-		JLabel lblNewLabel = new JLabel("欢迎登录学生成绩排名系统！");
-		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 28));
-		lblNewLabel.setBounds(270, 10, 400, 125);
-		frame.getContentPane().add(lblNewLabel);
- 
- 
-		JButton buttonLook = new JButton("查询成绩");
-		buttonLook.setBounds(200, 120, 150, 60);
-		frame.getContentPane().add(buttonLook);
- 
-		JButton buttonAdd = new JButton("修改成绩");
-		buttonAdd.setBounds(500, 120, 150, 60);
-		frame.getContentPane().add(buttonAdd);
- 
-		JButton buttonDelete = new JButton("删除成绩");
-		buttonDelete.setBounds(200, 200, 150, 60);
-		frame.getContentPane().add(buttonDelete);
- 
-		JButton buttonTop = new JButton("成绩排序");
-		buttonTop.setBounds(500, 200, 150, 60);
-		frame.getContentPane().add(buttonTop);
- 
-		JButton buttonSta = new JButton("成绩统计");
-		buttonSta.setBounds(200, 280, 150, 60);
-		frame.getContentPane().add(buttonSta);
- 
-		JButton buttonExit = new JButton("退出系统");
-		buttonExit.setBounds(500, 280, 150, 60);
-		frame.getContentPane().add(buttonExit);
- 
-		Icon icon = new ImageIcon();
-		JLabel label1 = new JLabel(icon);
-		frame.getLayeredPane().add(label1, new Integer(Integer.MIN_VALUE));
-		label1.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
-		Container cp = frame.getContentPane();
-		cp.setLayout(new BorderLayout());
-		((JPanel) cp).setOpaque(false);
- 
-		
-		// 按钮监听器
-		buttonLook.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				lookView index = new lookView();
-				JFrame framelook = index.lookFrame();
-				framelook.setVisible(true);
-				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			}
-		});
- 
-		buttonAdd.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String number = JOptionPane.showInputDialog("请输入需要添加或修改成绩学生的学号：");
-				add_deleteView add = new add_deleteView();
-				add.Score(frame, number, "add");
-				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			}
-		});
- 
-		buttonDelete.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) { //
-				String number = JOptionPane.showInputDialog("请输入需要删除成绩学生的学号：");
-				add_deleteView delete = new add_deleteView();
-				delete.Score(frame, number, "delete");
-				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			}
-		});
- 
-		buttonTop.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				topView tp = new topView();
-			}
-		});
- 
-		buttonSta.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				statistics sta = new statistics();
-			}
-		});
- 
-		buttonExit.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				frame.dispose();
-			}
-		});
-	}
+public class loginView {
+	 private JFrame frame; 
+	 private JTextField textField; 
+	 private JPasswordField textField_1; 
+	
+	 
+	 public static void main(String[] args) { 	 
+	    loginView window = new loginView(); 
+	    window.initialize();
+	    window.frame.setVisible(true); 
+	 } 
+		 
+	 private void initialize() { 
+	  frame = new JFrame(); 
+	  frame.setTitle("欢迎进入学生成绩排名系统"); 
+	  frame.setBounds(300, 250, 900, 500); 	
+	  
+	  Icon icon=new ImageIcon();
+	  JLabel label1=new JLabel(icon);
+	  frame.getLayeredPane().add(label1,new Integer(Integer.MIN_VALUE));
+	  label1.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+	  Container cp=frame.getContentPane();
+	  cp.setLayout(new BorderLayout());
+	  ((JPanel)cp).setOpaque(false);
+	  
+	  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+	  frame.getContentPane().setLayout(null);    
+	  JLabel lblNewLabel = new JLabel("学生成绩排名系统用户登录"); 
+	  lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 32)); 
+	  lblNewLabel.setBounds(250, 10, 400, 125);
+	  frame.getContentPane().add(lblNewLabel); 	   
+	  JLabel lblNewLabel_1 = new JLabel("用户名"); 
+	  lblNewLabel_1.setFont(new Font("宋体", Font.PLAIN, 18)); 
+	  lblNewLabel_1.setBounds(300, 150, 67, 30); 
+	  frame.getContentPane().add(lblNewLabel_1); 	   
+	  textField = new JTextField(); 
+	  textField.setBounds(400, 150, 141, 30); 
+	  frame.getContentPane().add(textField); 
+	  textField.setColumns(18); 	   
+	  JLabel label = new JLabel("密码"); 
+	  label.setFont(new Font("宋体", Font.PLAIN, 18));
+	  label.setBounds(300, 220, 67, 30); 
+	  frame.getContentPane().add(label);    
+	  textField_1 = new JPasswordField(); 
+	  textField_1.setEchoChar('*');
+	  textField_1.setColumns(18); 
+	  textField_1.setBounds(400, 220, 141, 30); 
+	  frame.getContentPane().add(textField_1); 
+	  JButton button = new JButton("登录");
+	  button.setBounds(300, 300, 100, 40); 
+	  frame.getContentPane().add(button); 
+	  button.addMouseListener(new MouseAdapter() { 
+	   @Override 
+	   public void mouseClicked(MouseEvent e) {  
+	    String user=textField.getText(); 
+	    String password=textField_1.getText(); 
+	    if(user.equals("")||user==null){ 
+	     JOptionPane.showMessageDialog(frame, "提示：帐号不能为空！"); 
+	     return; 
+	    }else if(password.equals("")||password==null){ 
+	     JOptionPane.showMessageDialog(frame, "提示：密码不能为空！"); 
+	     return; 
+	    }else if("1".equals(user)&&"123456".equals(password)){  
+	      MainView index=new MainView(); 
+	      JFrame frame2=index.getFrame(); 
+	      frame2.setVisible(true); 
+	      frame.dispose(); 
+	    }else {
+	    	JOptionPane.showMessageDialog(frame, "提示：用户名或密码错误，请重新输入！");
+	    }
+	   }    
+	  });   
+	  JButton button_1 = new JButton("退出"); 
+	  button_1.setBounds(450, 300, 100, 40); 
+	  frame.getContentPane().add(button_1); 
+	  button_1.addMouseListener(new MouseAdapter() {
+		  @Override 
+		   public void mouseClicked(MouseEvent e) { 
+			 frame.dispose();
+		  }
+	  });	   
+	} 
 }
