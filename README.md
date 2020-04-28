@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
  
-public class MainView {
+    public class MainView {
 	private JFrame frame;
  
 	public static void main(String[] args) {
